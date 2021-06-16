@@ -75,9 +75,9 @@ for the ECG with Random Electrodes Location}
 \authorrunning{Multerer \and Pezzuto}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \institute{Center for Computational Medicine in Cardiology,
-Institute of Computational Science,
+Euler Institute,
 Universit\`a della Svizzera italiana,
-via G.~Buffi 13, 6900 Lugano, Switzerland
+via la Santa 1, 6900 Lugano, Switzerland
 \email{\{michael.multerer,simone.pezzuto\}@usi.ch}}
 %
 \maketitle
@@ -212,7 +212,8 @@ which reads as follows:
 -\nabla\cdot(\tG_0\nabla u_0(\vx,t)) = 0, & \mbox{in $\OmegaT\times[0,\infty)$}, \\
 -\tG_0\nabla u_0(\vx,t)\cdot\vn = 0, & \mbox{on $\Sigma\times[0,\infty)$}, \\
 \phantom{-}\ue(\vx,t) = u_0(\vx,t), & \mbox{on $\Gamma\times[0,\infty)$}, \\
--\tGb\nabla\ue(\vx,t)\cdot\vn + \tG_0\nabla u_0(\vx,t)\cdot\vn = \tGi\nabla\Vm(\vx,t)\cdot\vn, &
+-(\tGi+\tGe)\nabla\ue(\vx,t)\cdot\vn & \\
+\qquad{} + \tG_0\nabla u_0(\vx,t)\cdot\vn = \tGi\nabla\Vm(\vx,t)\cdot\vn, &
 \mbox{on $\Gamma\times[0,\infty)$}.
 \end{cases}
 \end{equation}
@@ -392,8 +393,8 @@ The natural continuation of the above argument yields the correlation for
 the ECG according to
 \[
 \Cor[V](t,s) 
-= \int_{\Sigma^2} (\tGi\nabla\otimes\tGi\nabla) \Vm(\vx,t)\Vm(\vx',s)
-: (\nabla\otimes\nabla) \Cor[Z]\: \dd\sigma_{\vx}\dd\sigma_{\vx'},
+= \int_{\OmegaH^2} (\tGi\nabla\otimes\tGi\nabla) \Vm(\vx,t)\Vm(\vx',s)
+: (\nabla\otimes\nabla) \Cor[Z]\: \dd\vx\dd\vx',
 \]
 where the tensor product is $[\mathbf{u}\otimes\mathbf{v}]_{ij} = u_i(\vx)
 v_j(\vx')$ and the inner product between tensors is $\mathbf{A}:\mathbf{B}
@@ -546,7 +547,7 @@ of the form of Eq.~\eqref{eq:Kzg}. It is therefore
 independent on the number of time steps $N_t$ or the choice
 of $\Vm$, oppositely to the
 solution of the forward bidomain model in Eq.~\eqref{eq:bidomain},
-which requires $K\cdot N_t$ solutions for each choice of $\Vm$.
+which requires $N_t$ solutions for each choice of $\Vm$.
 
 We summarize below the proposed procedure to evaluate expectation and correlation of a single lead
 of the ECG, defined with $L \ge 2$ coefficients $\mathbf{a}$
